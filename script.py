@@ -24,7 +24,7 @@ title_bar = Frame(root, bg='orange', relief='raised', bd=0)
 title_bar.pack(fill=X)
 
 # Title label (optional)
-title_label = Label(title_bar, text='Renichat', bg='orange', fg='black', font='Helvetica 10 bold')
+title_label = Label(title_bar, text='RENICHAT', bg='orange', fg='black', font='Helvetica 13 bold')
 title_label.pack(side=LEFT, padx=10)
 
 # Close button
