@@ -1,8 +1,11 @@
 from tkinter import *
+import time 
+import datetime
 
 #create window and title
 root = Tk()
 root.title('Renichat')
+
 
 #set the window dimensions and position to centre
 window_width = 700
@@ -25,13 +28,22 @@ root.config(bg="black")
 
 #Chat box and displaying messages 
 # Send function
+def gettime():
+    global time 
+    time.set(str(datetime.datetime.now()))
+
 def send():
     send = "You -> " + e.get()
     
     if e.get() != '':
-        txt.insert(END, "\n" + send)
+        #get time from epoch
+        epoch_time = time.time()
+        current_time = time.ctime(epoch_time)
+        date = current_time[12:19]
+        txt.insert(END, "\n" + send + ' '+ '['+ date +']')
         e.delete(0, END)
-
+#frame 
+frame = LabelFrame(root, text="Renishaw", padx=10, pady=10)
 
 
 txt = Text(root, bg=BG_COLOUR, fg=TEXT_COLOUR, font=FONT, width=60)
