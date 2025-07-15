@@ -1,0 +1,37 @@
+import asyncio
+
+async def handle_connection(reader, writer):
+    addr = writer.get_extra_info('peername')
+    print(f"New connection from {addr}")
+
+    try:
+        while True:
+            data = await reader.read(1024)
+            if not data:
+                print(f"Connection from {addr} closed by client.")
+                break
+
+            message = data.decode().strip()
+            print(f"Received from {addr}: {message}")
+
+            # Echo the message back to the client
+            writer.write(data)
+            await writer.drain()
+    except asyncio.CancelledError:
+        print(f"Connection from {addr} was cancelled.")
+    except Exception as e:
+        print(f"Error with {addr}: {e}")
+    finally:
+        writer.close()
+        await writer.wait_closed()
+        print(f"Closed connection from {addr}")
+
+async def main():
+    server = await asyncio.start_server(handle_connection, '0.0.0.0', 8888)
+    addrs = ', '.join(str(sock.getsockname()) for sock in server.sockets)
+    print(f'Serving on {addrs}')
+
+    async with server:
+        await server.serve_forever()
+
+asyncio.run(main())
