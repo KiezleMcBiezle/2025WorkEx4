@@ -42,8 +42,8 @@ title_label.bind('<B1-Motion>', move_window)
 BG_COLOUR = '#000000'
 BUTTON_COLOUR = '#ffa500'
 TEXT_COLOUR = '#ffa500'
-FONT = 'Helvetica 14'
-FONT_BOLD = 'Helvetica 13 bold'
+FONT = 'Helvetica 10'
+FONT_BOLD = 'Helvetica 9 bold'
 
 # Chat text area
 txt = Text(root, bg=BG_COLOUR, fg=TEXT_COLOUR, font=FONT, width=60)
@@ -66,7 +66,7 @@ def send_msg():
         e.delete(0, END)
 
 # Send button
-send_btn = Button(input_frame, text="Send", font=(FONT_BOLD, 10), bg=TEXT_COLOUR, command=send_msg)
+send_btn = Button(input_frame, text="Send", font=(FONT_BOLD, 25), bg=TEXT_COLOUR, command=send_msg)
 send_btn.pack(side=LEFT, padx=5)
 
 # Run the application
