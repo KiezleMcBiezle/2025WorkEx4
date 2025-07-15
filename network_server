@@ -1,17 +1,17 @@
 import asyncio
 import socket
 socket.getaddrinfo('localhost', 8888)
-async def handle_connection(reader, send):
+async def handle_connection(reader, writer):
     data = await reader.read(2000)
     message = data.decode()
-    send.write(data)
-    await send.drain()
+    writer.write(data)
+    await writer.drain()
     print("Close the connection")
-    send.close()
-    await send.wait_closed()
+    writer.close()
+    await writer.wait_closed()
 
 async def main():
-    server = await asyncio.start_server(handle_connection, '0.0.0.0, 8888')
+    server = await asyncio.start_server(handle_connection, '0.0.0.0', 8888)
     addrs = ', '.join(str(sock.getsockname()) for sock in server.sockets)
     print(f'Serving on {addrs}')
     async with server:
