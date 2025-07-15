@@ -57,7 +57,7 @@ input_frame.pack(fill=X, pady=10)
 e = Entry(input_frame, bg="#2C3E50", fg=TEXT_COLOUR, font=FONT, width=55)
 e.pack(side=LEFT, padx=10)
 
-# Send function
+# Send function, when the send button is pressed the message is displayed 
 def send_msg():
     user_text = e.get()
     if user_text.strip() != '':
