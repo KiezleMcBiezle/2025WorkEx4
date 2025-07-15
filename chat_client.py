@@ -1,5 +1,7 @@
 import socket
 from threading import Thread
+daemon = True  # This allows the thread to exit when the main program exits.
+# The socket module provides access to the BSD socket interface.
 # Provides us with methods for interacting with the operating system.
 import os
 
@@ -20,7 +22,7 @@ class Client:
   def talk_to_server(self):
     self.socket.send(self.name.encode())
     Thread(target = self.receive_message).start()
-    self.send_message()
+    self.send_message(try-except)
     
   # Get user input and send the message to the server
   # with the client's name prepended.
@@ -41,4 +43,4 @@ class Client:
       print("\033[1;31;40m" + server_message + "\033[0m")
       
 if __name__ == '__main__':
-  Client('192.168.55.3', 8888)
+  Client('192.168.55.3', 12345)
