@@ -4,6 +4,7 @@ from tkinter import *
 root = Tk()
 root.title('Renichat')
 
+#set the window dimensions and position to centre
 window_width = 700
 window_height = 600
 screen_width = root.winfo_screenwidth()
@@ -22,11 +23,15 @@ FONT = 'Helvetica 14'
 FONT_BOLD = 'Helvetica 13 bold'
 root.config(bg="black")
 
+#Chat box and displaying messages 
 # Send function
 def send():
     send = "You -> " + e.get()
-    txt.insert(END, "\n" + send)
-    e.delete(0, END)
+    
+    if e.get() != '':
+        txt.insert(END, "\n" + send)
+        e.delete(0, END)
+
 
 
 txt = Text(root, bg=BG_COLOUR, fg=TEXT_COLOUR, font=FONT, width=60)
