@@ -54,7 +54,7 @@ input_frame = Frame(root, bg=BG_COLOUR)
 input_frame.pack(fill=X, pady=10)
 
 # Message entry
-e = Entry(input_frame, bg="#2C3E50", fg=TEXT_COLOUR, font=FONT, width=55)
+e = Entry(input_frame, bg="#2C3E50", fg=TEXT_COLOUR, font=(FONT, 12), width=55)
 e.pack(side=LEFT, padx=10)
 
 # Send function, when the send button is pressed the message is displayed 
@@ -66,7 +66,7 @@ def send_msg():
         e.delete(0, END)
 
 # Send button
-send_btn = Button(input_frame, text="Send", font=FONT_BOLD, bg=TEXT_COLOUR, command=send_msg)
+send_btn = Button(input_frame, text="Send", font=(FONT_BOLD, 10), bg=TEXT_COLOUR, command=send_msg)
 send_btn.pack(side=LEFT, padx=5)
 
 # Run the application
