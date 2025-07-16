@@ -1,7 +1,7 @@
 from tkinter import *
 import time
 import datetime
-
+# Renichat - A simple chat application using Tkinter
 # Create window and title
 root = Tk()
 root.title('Renichat')
@@ -40,8 +40,7 @@ title_label.bind('<B1-Motion>', move_window)
 
 # Colours and fonts
 BG_COLOUR = '#000000'
-BUTTON_COLOUR = '#ffa500'
-TEXT_COLOUR = '#ffa500'
+BUTTON_COLOUR, TEXT_COLOUR = '#ffa500'
 FONT = 'Helvetica 14'
 FONT_BOLD = 'Helvetica 13 bold'
 

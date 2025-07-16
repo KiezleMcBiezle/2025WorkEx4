@@ -52,4 +52,4 @@ class Client:
             sys.exit(0)
 
 if __name__ == '__main__':
-    Client('192.168.55.3', 12345)  # Adjust the IP and port as needed
+    Client('192.168.55.16', 12345)  # Adjust the IP and port as needed
