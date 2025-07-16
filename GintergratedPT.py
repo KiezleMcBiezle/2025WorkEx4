@@ -44,7 +44,7 @@ class Client:
 
 
 class ChatGUI:
-    def __init__(self, host='127.0.0.1', port=12345):
+    def __init__(self, host='192.168.55.16', port=12345):
         self.client = None
 
         # Initialize GUI
