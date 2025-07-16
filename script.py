@@ -1,6 +1,10 @@
 from tkinter import *
 import time
 import datetime
+from client1 import Client
+
+client = Client('192.168.55.13', 12345)  # Adjust the IP and port as needed,
+# Will run upon creation without stopping
 # Renichat - A simple chat application using Tkinter
 # Create window and title
 root = Tk()
@@ -40,7 +44,7 @@ title_label.bind('<B1-Motion>', move_window)
 
 # Colours and fonts
 BG_COLOUR = '#000000'
-BUTTON_COLOUR, TEXT_COLOUR = '#ffa500'
+BUTTON_COLOUR, TEXT_COLOUR = "#ff6600"
 FONT = 'Helvetica 14'
 FONT_BOLD = 'Helvetica 13 bold'
 
