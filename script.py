@@ -1,7 +1,7 @@
 from tkinter import *
 import time
 import datetime
-from client1 import Client
+from client1final import Client
 
 client = Client('192.168.55.13', 12345)  # Adjust the IP and port as needed,
 # Will run upon creation without stopping
