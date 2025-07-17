@@ -121,8 +121,40 @@ class ChatGUI:
         self.root.geometry('700x600')
         self.root.config(bg="black")
 
+        # Remove the default title bar
+        self.root.overrideredirect(True)
+        
+        # Set window dimensions
+        window_width = 700
+        window_height = 600
+        screen_width = self.root.winfo_screenwidth()
+        screen_height = self.root.winfo_screenheight()
+        center_x = int(screen_width / 2 - window_width / 2)
+        center_y = int(screen_height / 2 - window_height / 2)
+        self.root.geometry(f'{window_width}x{window_height}+{center_x}+{center_y}')
+        self.root.config(bg="black")
+
+        # Custom title bar
+        title_bar = Frame(self.root, bg='orange', relief='raised', bd=0)
+        title_bar.pack(fill=X)
+
+        # Title label (optional)
+        title_label = Label(title_bar, text='RENICHAT', bg='orange', fg='black', font='stencil')
+        title_label.pack(side=LEFT, padx=10)
+
+        # Close button
+        close_button = Button(title_bar, text='X', command=self.root.destroy, bg='red', fg='white', bd=0, padx=5, pady=2)
+        close_button.pack(side=RIGHT)
+
+        # Bind the window drag to title bar
+        def move_window(event):
+            self.root.geometry(f'+{event.x_root}+{event.y_root}')
+
+        title_bar.bind('<B1-Motion>', move_window)
+        title_label.bind('<B1-Motion>', move_window)
+
         # Текстовое поле для чата
-        self.txt = Text(self.root, bg="#000000", fg="#ff6600", font='Helvetica 14', width=60)
+        self.txt = Text(self.root, bg="#000000", fg="#ff6600", font='Helvetica 10', width=60)
         self.txt.pack(padx=10, pady=(5, 0), fill=BOTH, expand=True)
         self.txt.config(state=DISABLED)
 
@@ -130,14 +162,14 @@ class ChatGUI:
         input_frame = Frame(self.root, bg="black")
         input_frame.pack(fill=X, pady=10)
 
-        self.entry = Entry(input_frame, bg="#2C3E50", fg="#ff6600", font='Helvetica 14', width=40)
+        self.entry = Entry(input_frame, bg="#2C3E50", fg="#ff6600", font='Helvetica 10', width=40)
         self.entry.pack(side=LEFT, padx=10)
         self.entry.bind("<Return>", lambda event: self.send_msg())
 
-        send_btn = Button(input_frame, text="Send", font='Helvetica 13 bold', bg='#ff6600', command=self.send_msg)
+        send_btn = Button(input_frame, text="Send", font='Helvetica 9 bold', bg='#ff6600', command=self.send_msg)
         send_btn.pack(side=LEFT, padx=5)
 
-        send_img_btn = Button(input_frame, text="Send Image", font='Helvetica 13 bold', bg='#008000', fg='white', command=self.send_image)
+        send_img_btn = Button(input_frame, text="Send Image", font='Helvetica 9 bold', bg='#008000', fg='white', command=self.send_image)
         send_img_btn.pack(side=LEFT, padx=5)
 
         # Подключаемся к серверу
@@ -225,4 +257,4 @@ class ChatGUI:
 
 
 if __name__ == '__main__':
-    ChatGUI('192.168.55.16', 12346)  # Подставь IP и порт сервера
+    ChatGUI('192.168.55.15', 12345)  # Подставь IP и порт сервера
